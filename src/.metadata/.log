@@ -113,3 +113,22 @@ java.io.FileNotFoundException: /Users/tris/Desktop/harp-cell/src/harp_cell_elect
 
 !ENTRY org.eclipse.cdt.core 1 0 2023-06-27 12:38:26.200
 !MESSAGE Indexed 'stm32f051_harp_cell_electrode' (19 sources, 81 headers) in 2.57 sec: 4,127 declarations; 22,532 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0075%)
+!SESSION 2023-06-27 14:29:35.298 -----------------------------------------------
+eclipse.buildId=Version 1.10.1
+java.version=11.0.14.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_GB
+Framework arguments:  -keyring /Users/tris/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -keyring /Users/tris/.eclipse_keyring
+
+!ENTRY org.eclipse.core.resources 2 10035 2023-06-27 14:29:41.067
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2023-06-27 14:29:44.405
+!MESSAGE Log4j initialized with config file /Users/tris/Desktop/harp-cell/src/.metadata/.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2023-06-27 14:29:57.444
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2023-06-27 14:30:25.226
+!MESSAGE Indexed 'stm32f051_harp_cell_receiver' (20 sources, 110 headers) in 11.5 sec: 7,920 declarations; 36,016 references; 2 unresolved inclusions; 33 syntax errors; 188 unresolved names (0.43%)

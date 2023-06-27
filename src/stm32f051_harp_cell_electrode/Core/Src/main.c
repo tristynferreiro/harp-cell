@@ -89,50 +89,28 @@ HAL_Init();
 
   /* USER CODE BEGIN 2 */
   /*
-   * I2C1 pins have been reassigned to the pins previously used for I2C2. This allows
+   * I2C1 pins have been reassigned to the pins previously used for I2C2 (PB10 and 11). This allows
    * I2C1 and the LCD screen (which uses PB8 and PB9) to be used simulatenously.
    * I2C2 has been disabled on Stm32CubeIDE
    */
    MX_I2C1_Init();
 
    lcd_init(); // set up LCD lines and send initialisation commands
-   // Switch LEDs on
-    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, 1);
-    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, 1);
-    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_2, 0);
-    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_3, 0);
-    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, 1);
-    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, 1);
-    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, 0);
-    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, 1);
 
-    // Read values and store them
-    uint8_t address = 0;
-    address |= (HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_7) <<7)
-        					| (HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_6) <<6)
-    						| (HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_5) <<5)
-    						| (HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_4) <<4)
-    						| (HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_3) <<3)
-    						| (HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_2) <<2)
-    						| (HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_1) <<1)
-    						| (HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_0));
-    uint8_t binaryString[9];
-    for (uint8_t i = 0; i < 8; i++)
-    {
-    	//address |= (HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_0+i) <<i); // does not work bc of addresses
-    	binaryString[7-i] = ((address >> i) & 1) ? '1' : '0';//check if this can be shortened
-    }
-
-    binaryString[8] = '\0'; // Add null terminator
-    //uint8_t test[] = "Hi!";
-    lcd_command(LCD_CLEAR_DISPLAY);
-    lcd_string(binaryString);
+   lcd_command(LCD_CLEAR_DISPLAY);
+   lcd_string("Txadd: 10110001");
+   uint8_t sender_address = 0b10110001;
+   uint8_t rxBufferSize = 30;
+   uint8_t rxBuffer[rxBufferSize];
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  HAL_I2C_Master_Receive(&hi2c1, sender_address,rxBuffer, rxBufferSize,1000 );
+	  lcd_command(LCD_GOTO_LINE_2); // go to lower line
+	  lcd_string(rxBuffer);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
