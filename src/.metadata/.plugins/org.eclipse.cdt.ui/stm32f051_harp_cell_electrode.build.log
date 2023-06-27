@@ -1,0 +1,17 @@
+13:38:42 **** Incremental Build of configuration Debug for project stm32f051_harp_cell_electrode ****
+make -j3 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F051x8 -c -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "stm32f051_harp_cell_electrode.elf" @"objects.list"   -mcpu=cortex-m0 -T"/Users/tris/Desktop/harp-cell/src/stm32f051_harp_cell_electrode/STM32F051C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f051_harp_cell_electrode.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32f051_harp_cell_electrode.elf
+ 
+arm-none-eabi-size   stm32f051_harp_cell_electrode.elf 
+arm-none-eabi-objdump -h -S  stm32f051_harp_cell_electrode.elf  > "stm32f051_harp_cell_electrode.list"
+   text	   data	    bss	    dec	    hex	filename
+   7272	     20	   1652	   8944	   22f0	stm32f051_harp_cell_electrode.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32f051_harp_cell_electrode.list
+ 
+
+13:38:43 Build Finished. 0 errors, 0 warnings. (took 1s.30ms)
+
